@@ -4,14 +4,33 @@ module.exports = {
     toField: '#to',
     phoneNumberField: '#phone',
     codeField: '#code',
+    cardNumberField: '#number',
+    cvvField: '/html/body/div/div/div[2]/div[2]/div[2]/form/div[1]/div[2]/div[2]/div[2]/input',
+    driverMessageBox: '#comment',
+    blanketToggle: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]/div/span',
     // Buttons
     callATaxiButton: 'button=Call a taxi',
     phoneNumberButton: '//div[starts-with(text(), "Phone number")]',
     nextButton: 'button=Next',
     confirmButton: 'button=Confirm',
+    linkButton: '//*[@id="root"]/div/div[2]/div[2]/div[2]/form/div[3]/button[1]',
+    selectingAmount: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[3]',
+   orderButton: '//*[@id="root"]/div/div[3]/div[4]/button',
+   closePayment: '//*[@id="root"]/div/div[2]/div[2]/div[1]/button',
+   toggleSelected: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]/div/input',
+   iceCreamConfirmation: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[2]',
     // Modals
-    phoneNumberModal: '.modal',
+    phoneNumberModal: '.modal', 
+    supportiveButton: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]',
     // Functions
+    addingCard: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[2]',
+    // Modals
+    addCardInformation: '//*[@id="root"]/div/div[2]/div[2]/div[1]/div[2]/div[3]',
+    cardTitle: '//*[@id="root"]/div/div[2]/div[2]/div[2]/div',
+    cardVerification: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[2]/div[2]/div[1]',
+    carSearch: '//*[@id="root"]/div/div[5]/div[2]/div[1]/div/div[1]',
+
+
     fillAddresses: async function(from, to) {
         const fromField = await $(this.fromField);
         await fromField.setValue(from);
@@ -47,5 +66,54 @@ module.exports = {
         const code = await requests[0].response.body.code
         await codeField.setValue(code)
         await $(this.confirmButton).click()
+    }, 
+    selectSupportiveMode: async function() {
+        const supportiveButton = await $(this.supportiveButton);
+        await supportiveButton.waitForDisplayed();
+        await supportiveButton.click();
     },
+    addingCreditCard: async function(creditCardNumber, CVV){
+        const addingCreditCard = await $(this.addingCard);
+        await addingCreditCard.waitForDisplayed();
+        await addingCreditCard.click();
+        const addCardInformation = await $(this.addCardInformation);
+        await addCardInformation.waitForDisplayed();
+        await addCardInformation.click();
+        const cardNumberField = await $(this.cardNumberField);
+        await cardNumberField.setValue(creditCardNumber);
+        const cvvField = await $(this.cvvField);
+        await cvvField.setValue(CVV);
+        const cardTitle = await $(this.cardTitle);
+        await cardTitle.click();
+        const linkButton = await $(this.linkButton);
+        await linkButton.click();
+        const closePayment = await $(this.closePayment);
+        await closePayment.waitForDisplayed();
+        await closePayment.click();
+    },
+    messagingTheDriver: async function(desiredText){
+        const messagingTheDriver = await $(this.driverMessageBox);
+        await messagingTheDriver.waitForDisplayed();
+        await messagingTheDriver.setValue(desiredText);
+    },
+    orderingBlanket: async function(desiredText){
+        const orderingBlanket = await $(this.blanketToggle);
+        await orderingBlanket.waitForDisplayed();
+        await orderingBlanket.click();
+    },
+
+    selectingIceCream: async function(){
+        const selectingIceCream = await $(this.selectingAmount);
+        await selectingIceCream.waitForDisplayed();
+        await selectingIceCream.click();
+        await selectingIceCream.click();
+    },
+
+    clickOrderButton: async function(){
+        const clickOrderButton = await $(this.orderButton);
+        await clickOrderButton.waitForDisplayed();
+        await clickOrderButton.click();
+    }
+
+
 };
