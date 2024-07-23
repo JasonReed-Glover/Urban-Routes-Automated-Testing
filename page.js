@@ -13,21 +13,21 @@ module.exports = {
     phoneNumberButton: '//div[starts-with(text(), "Phone number")]',
     nextButton: 'button=Next',
     confirmButton: 'button=Confirm',
-    linkButton: '//*[@id="root"]/div/div[2]/div[2]/div[2]/form/div[3]/button[1]',
-    selectingAmount: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[3]',
+    linkButton: 'button=Link',
+    selectingAmount: '.counter-plus',
    orderButton: '//*[@id="root"]/div/div[3]/div[4]/button',
    closePayment: '//*[@id="root"]/div/div[2]/div[2]/div[1]/button',
    toggleSelected: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]/div/input',
-   iceCreamConfirmation: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[2]',
+   iceCreamConfirmation: 'div=2',
     // Modals
     phoneNumberModal: '.modal', 
-    supportiveButton: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]',
+    supportiveButton: '//div[.="Supportive"]/..',
     // Functions
     addingCard: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[2]',
     // Modals
     addCardInformation: '//*[@id="root"]/div/div[2]/div[2]/div[1]/div[2]/div[3]',
-    cardTitle: '//*[@id="root"]/div/div[2]/div[2]/div[2]/div',
-    cardVerification: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[2]/div[2]/div[1]',
+    cardTitle: 'div=Adding a card',
+    cardVerification: 'div=Cash',
     carSearch: '//*[@id="root"]/div/div[5]/div[2]/div[1]/div/div[1]',
 
 
